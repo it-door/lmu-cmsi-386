@@ -1,28 +1,36 @@
-function change(){
+
+function change(toChange) {
+    let quarters = toChange % 25;
+    toChange = toChange - (quarters * 25);
+    let dimes = toChange % 10;
+    toChange = toChange - (dimes * 10);
+    let nickels = toChange % 5;
+    toChange = toChange - (nickels * 5);
+    let changeMade = [quarters, dimes, nickels, toChange];
+    return changeMade;
+}
+
+function stripQuotes(quote){
 
 }
 
-function stripQuotes(){
+function scramble(string){
 
 }
 
-function scramble(){
+function powers(base, limit, callback){
 
 }
 
-function powers(){
+function powersGenerator(base, limit){
 
 }
 
-function powersGenerator(){
+function say(word){
 
 }
 
-function say(){
-
-}
-
-function interleave(){
+function interleave(array, ...values){
 
 }
 
@@ -35,5 +43,5 @@ function makeCryptoFunctions(){
 }
 
 function randomName(){
-    
+
 }
