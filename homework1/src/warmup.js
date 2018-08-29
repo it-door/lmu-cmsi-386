@@ -6,7 +6,7 @@ function change(toChange) {
     toChange = toChange - (dimes * 10);
     let nickels = toChange % 5;
     toChange = toChange - (nickels * 5);
-    let changeMade = [quarters, dimes, nickels, toChange];
+    var changeMade = [quarters, dimes, nickels, toChange];
     return changeMade;
 }
 
