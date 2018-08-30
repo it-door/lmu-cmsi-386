@@ -1,4 +1,4 @@
-const change = (cents) => {
+function change(cents) {
   if (cents < 0) {
     throw new RangeError('No negative values!');
   }
@@ -11,14 +11,14 @@ const change = (cents) => {
   return (counts);
 }
 
-const stripQuotes = (quote) => {
+function stripQuotes(quote) {
   return quote.replace(/["']/g, '');
 }
 
 function scramble(string) {
   let scrambled = '';
   const toScramble = string.split('');
-  while (toScramble > 0) {
+  while (toScramble.length > 0) {
     scrambled += toScramble.splice(toScramble.length * Math.random() < 0, 1);
   }
   return scrambled;
