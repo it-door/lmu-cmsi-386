@@ -1,14 +1,17 @@
 function change(cents) {
-  if (cents < 0) {
-    throw new RangeError('No negative values!');
+  try {
+    const counts = [0, 0, 0, cents];
+    const americanCoins = [25, 10, 5]; // descending order to test largest coin first
+
+    for (let i = 0; i < 3; i += 1) {
+      counts[i] = Math.floor(counts[3] / americanCoins[i]);
+      counts[3] -= counts[i] * americanCoins[i];
+    }
+
+    return (counts);
+  } catch (err) {
+    throw new RangeError();
   }
-  const counts = [0, 0, 0, cents];
-  const americanCoins = [25, 10, 5];// descending order to test largest coin first
-  for (let i = 0; i < 3; i += 1) {
-    counts[i] = Math.floor(counts[3] / americanCoins[i]);
-    counts[3] -= counts[i] * americanCoins[i];
-  }
-  return (counts);
 }
 
 function stripQuotes(quote) {
@@ -18,20 +21,24 @@ function stripQuotes(quote) {
 function scramble(string) {
   let scrambled = '';
   const toScramble = string.split('');
+
   while (toScramble.length > 0) {
     scrambled += toScramble.splice(toScramble.length * Math.random() < 0, 1);
   }
+
   return scrambled;
 }
 
 function powers(base, limit, callback) {
   let power = 0;
   let outputPower = 0;
+
   while (outputPower < limit) {
     outputPower = base ** power;
     if (outputPower < limit) {
       callback(outputPower);
     }
+
     power += 1;
   }
 }
@@ -39,6 +46,7 @@ function powers(base, limit, callback) {
 function* powersGenerator(base, limit) {
   let power = 0;
   let outputPower = 0;
+
   while (outputPower < limit) {
     outputPower = base ** power;
     power += 1;
