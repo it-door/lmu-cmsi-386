@@ -63,13 +63,19 @@ function interleave(array, ...values) {
 
 function cylinder(spec) {
   let { radius, height } = spec;
+  if (radius === undefined) {
+    radius = 1;
+  }
+  if (height === undefined) {
+    height = 1;
+  }
   const surfaceArea = () => 2 * Math.PI * radius * height + 2 * Math.PI * radius * radius;
   const volume = () => Math.PI * radius * radius * height;
   const widen = (factor) => { radius *= factor; };
   const stretch = (factor) => { height *= factor; };
   const toString = () => `Cylinder with radius ${radius} and height ${height}`;
   return Object.freeze({
-    surfaceArea, volume, widen, stretch, toString,
+    surfaceArea, volume, widen, stretch, toString, radius, height,
   });
 }
 
