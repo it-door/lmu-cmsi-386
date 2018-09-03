@@ -58,7 +58,18 @@ function say(word) {
 }
 
 function interleave(array, ...values) {
-  return 0;
+  const interleaved = [];
+  for (let i = 0, j = 0; i < array.length || j < values.length;) {
+    if (i < array.length) {
+      interleaved.push(array[i]);
+      i += 1;
+    }
+    if (j < values.length) {
+      interleaved.push(values[j]);
+      j += 1;
+    }
+  }
+  return interleaved;
 }
 
 function cylinder(spec) {
@@ -79,11 +90,11 @@ function cylinder(spec) {
   });
 }
 
-function makeCryptoFunctions() {
+function makeCryptoFunctions(key, algorithm) {
   return 0;
 }
 
-function randomName() {
+function randomName(args) {
   return 0;
 }
 
