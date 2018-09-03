@@ -94,8 +94,23 @@ function cylinder(spec) {
   });
 }
 
+const crypto = require('crypto');
+
 function makeCryptoFunctions(key, algorithm) {
-  return 0;
+  const funcs = [];
+  funcs[0] = function encrypt(utf8) {
+    const theKey = crypto.createCipher(algorithm, key);
+    let hex = theKey.update(utf8, 'utf8', 'hex');
+    hex += theKey.final('hex');
+    return hex;
+  };
+  funcs[1] = function decrypt(hex) {
+    const theKey = crypto.createDecipher(algorithm, key);
+    let utf8 = theKey.update(hex, 'hex', 'utf8');
+    utf8 += theKey.final('utf8');
+    return utf8;
+  };
+  return funcs;
 }
 
 const request = require('request');
