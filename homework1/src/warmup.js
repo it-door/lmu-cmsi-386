@@ -129,8 +129,8 @@ const request = require('request');
 
 function randomName(info) {
   return new Promise((resolve, reject) => {
-    request(`https://uinames.com/api/?amount=1&gender=${info.gender}&region=${info.region}`, { json: true }, (error, response, body) => {
-      if (error) reject(error);
+    request(`https://uinames.com/api/?amount=1&gender=${info.gender}&region=${info.region}`, (error, response, body) => {
+      if (error || response.statusCode !== 200) reject(new Error(response.statusCode));
       else resolve(`${body.surname}, ${body.name}`);
     });
   });
