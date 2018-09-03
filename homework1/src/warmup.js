@@ -4,7 +4,7 @@ function change(cents) {
   }
 
   const counts = [0, 0, 0, cents];
-  const americanCoins = [25, 10, 5]; // descending order to test largest coin first
+  const americanCoins = [25, 10, 5];
 
   for (let i = 0; i < 3; i += 1) {
     counts[i] = Math.floor(counts[3] / americanCoins[i]);
@@ -53,22 +53,23 @@ function* powersGenerator(base, limit) {
   }
 }
 
-const say = word => otherWord => (otherWord === undefined ? word : say(`${word} ${otherWord}`));
+// const say = word => otherWord => (otherWord === undefined ? word : say(`${word} ${otherWord}`));
 
-// function say(word) {
-//   if (word === undefined) {
-//     return '';
-//   }
-//   return function(otherWord) {
-//     if (otherWord === undefined) {
-//       return word;
-//     }
-//     return say(`${word} ${otherWord}`);
-//   };
-// }
+function say(word) {
+  if (word === undefined) {
+    return '';
+  }
+  return function curry(otherWord) {
+    if (otherWord === undefined) {
+      return word;
+    }
+    return say(`${word} ${otherWord}`);
+  };
+}
 
 function interleave(array, ...values) {
   const interleaved = [];
+
   for (let i = 0, j = 0; i < array.length || j < values.length;) {
     if (i < array.length) {
       interleaved.push(array[i]);
@@ -79,17 +80,20 @@ function interleave(array, ...values) {
       j += 1;
     }
   }
+
   return interleaved;
 }
 
 function cylinder(spec) {
   let { radius, height } = spec;
+
   if (radius === undefined) {
     radius = 1;
   }
   if (height === undefined) {
     height = 1;
   }
+
   const surfaceArea = () => 2 * Math.PI * radius * height + 2 * Math.PI * radius * radius;
   const volume = () => Math.PI * radius * radius * height;
   const widen = (factor) => { radius *= factor; };
