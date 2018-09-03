@@ -84,7 +84,13 @@ function cylinder(spec) {
   const stretch = (factor) => { height *= factor; };
   const toString = () => `Cylinder with radius ${radius} and height ${height}`;
   return Object.freeze({
-    surfaceArea, volume, widen, stretch, toString, radius, height,
+    surfaceArea,
+    volume,
+    get radius() { return radius; },
+    get height() { return height; },
+    widen,
+    stretch,
+    toString,
   });
 }
 
@@ -92,8 +98,15 @@ function makeCryptoFunctions(key, algorithm) {
   return 0;
 }
 
-function randomName(args) {
-  return 0;
+const request = require('request');
+
+function randomName(info) {
+  return new Promise((resolve, reject) => {
+    request(`https://uinames.com/api/?amount=1&gender=${info.gender}&region=${info.region}`, { json: true }, (error, response, body) => {
+      if (error) reject(error);
+      else resolve(`${body.surname}, ${body.name}`);
+    });
+  });
 }
 
 module.exports = {
