@@ -55,6 +55,18 @@ function* powersGenerator(base, limit) {
 
 const say = word => otherWord => (otherWord === undefined ? word : say(`${word} ${otherWord}`));
 
+// function say(word) {
+//   if (word === undefined) {
+//     return '';
+//   }
+//   return function(otherWord) {
+//     if (otherWord === undefined) {
+//       return word;
+//     }
+//     return say(`${word} ${otherWord}`);
+//   };
+// }
+
 function interleave(array, ...values) {
   const interleaved = [];
   for (let i = 0, j = 0; i < array.length || j < values.length;) {
