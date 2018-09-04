@@ -53,8 +53,6 @@ function* powersGenerator(base, limit) {
   }
 }
 
-// const say = word => otherWord => (otherWord === undefined ? word : say(`${word} ${otherWord}`));
-
 function say(word) {
   if (word === undefined) {
     return '';
