@@ -23,7 +23,7 @@ function scramble(string) {
   const toScramble = string.split('');
 
   while (toScramble.length > 0) {
-    scrambled += toScramble.splice(toScramble.length * Math.random() << 0, 1);
+    scrambled += toScramble.splice(Math.round(toScramble.length * Math.random()), 1);
   }
 
   return scrambled;
