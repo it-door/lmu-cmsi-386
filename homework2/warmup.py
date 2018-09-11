@@ -14,8 +14,8 @@ def change(cents):
 def strip_quotes(quote):
     return quote.replace('"', '').replace("'", '')
 
-def scramble():
-    pass
+def scramble(string):
+    return ''.join(random.sample(string, len(string)))
 
 def say():
     pass
