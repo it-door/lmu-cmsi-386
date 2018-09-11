@@ -5,10 +5,10 @@ def change(cents):
     if cents < 0:
       raise ValueError('amount cannot be negative')
     count = ([0, 0, 0, cents])
-    americanCoins = ([25, 10, 5])
+    american_coins = ([25, 10, 5])
     for i in range(3):
-      count[i] = math.floor(count[3] / americanCoins[i])
-      count[3] -= count[i] * americanCoins[i]
+      count[i] = math.floor(count[3] / american_coins[i])
+      count[3] -= count[i] * american_coins[i]
     return tuple(count)
 
 def strip_quotes(quote):

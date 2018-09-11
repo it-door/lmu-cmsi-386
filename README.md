@@ -17,3 +17,18 @@
             - randomName()
     - test
         - warmup-test.js
+- homework2 - Python (Created 9/11)
+    - warmup.py
+        - change()
+        - strip_quotes()
+        - scramble()
+        - say()
+        - triples()
+        - powers()
+        - interleave()
+        - Cylinder()
+        - make_crypto_functions()
+        - random_name()
+    - tests
+        - __init__.py
+        - warmup_test.py
