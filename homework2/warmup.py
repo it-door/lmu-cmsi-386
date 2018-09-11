@@ -1,4 +1,5 @@
 import math
+import random
 
 def change(cents):
     if cents < 0:
@@ -10,8 +11,8 @@ def change(cents):
       count[3] -= count[i] * americanCoins[i]
     return tuple(count)
 
-def strip_quotes():
-    pass
+def strip_quotes(quote):
+    return quote.replace('"', '').replace("'", '')
 
 def scramble():
     pass
