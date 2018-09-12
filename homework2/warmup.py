@@ -18,11 +18,12 @@ def strip_quotes(quote):
 def scramble(string):
     return ''.join(random.sample(string, len(string)))
 
-def say():
-    if word == '':
+def say(word = None):
+    if word == None:
         return ''
-    def curry(otherWord):
-      if (otherWord == undefined):
+    def curry(otherWord = None):
+      print(otherWord)
+      if (otherWord == None):
         return word
       return say(word % " " % otherWord)
 
