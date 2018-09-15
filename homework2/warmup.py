@@ -1,6 +1,7 @@
 import math
 import random
 import Crypto
+import base64
 
 def change(cents):
     if cents < 0:
@@ -21,10 +22,7 @@ def scramble(string):
 def say(word = None):
     if word == None:
         return ''
-    def curry(otherWord = None):
-      print(otherWord)
-      if (otherWord == None):
-        return word
+    def curry(otherWord):
       return say(word % " " % otherWord)
 
 def triples(n):
@@ -40,23 +38,33 @@ def powers(base, limit):
       outputPower = base ** power
       power += 1
 
-def interleave(array, *values):
-    interleaved = []
-    for i,j in zip(range(len(array)), range(len(values))):
-      if i < len(array):
-        interleaved.append(array[i])
-        i += 1
+def interleave(a, b = None):
+    if b == None:
+        return a
+    return [item for pair in zip(a, b) for item in pair] + a[len(b):] + b[len(a):]
 
-      if j < len(values):
-        interleaved.append(values[j])
-        j += 1
-    return interleaved
+class Cylinder:
+    def __init__(self, radius=1, height=1):
+      self.radius = radius
+      self.height = height
+      self.volume = self.radius * self.radius * math.pi * self.height
+      self.surface_area = 2 * math.pi * self.radius * self.height + 2 * math.pi * self.radius * self.radius
+    def widen(self, factor):
+      self.radius *= factor
+      self.volume = self.radius * self.radius * math.pi * self.height
+      self.surface_area = 2 * math.pi * self.radius * self.height + 2 * math.pi * self.radius * self.radius
+      return self.radius
+    def stretch(self, factor):
+      self.height *= factor
+      self.volume = self.radius * self.radius * math.pi * self.height
+      self.surface_area = 2 * math.pi * self.radius * self.height + 2 * math.pi * self.radius * self.radius
+      return self.height
 
-def Cylinder():
-    pass
-
-def make_crypto_functions():
-    pass
+def make_crypto_functions(key, IV):
+    def e():
+        pass
+    def d():
+        pass
 
 def random_name():
     pass
