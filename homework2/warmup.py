@@ -22,8 +22,13 @@ def scramble(string):
 def say(word = None):
     if word == None:
         return ''
-    def curry(otherWord):
-      return say(word % " " % otherWord)
+    def curry(otherWord = None):
+        if otherWord == None:
+          return curry.string
+        curry.string += " " + otherWord
+        return curry
+    curry.string = word
+    return curry
 
 def triples(n):
     return [(c,b,a) for a in range(n+1) for b in range(a) for c in range(b) if a*a == b*b + c*c]
