@@ -95,11 +95,9 @@ def test_cylinder():
     assert pytest.approx(c.volume, 0.000001) == 720 * math.pi
 
 def test_crypto():
-    assert isinstance(make_crypto_functions('zombie devops feynman123', '0000000000000000'), tuple)
-    e, d = make_crypto_functions('zombie devops feynman123', '0000000000000000')
-    assert e(b'Hello......world') == b'\x15\x8a\xa5a\xd8\x07\\d(e\xc9\xbes*\x13\x9f'
-    assert d(b'\x15\x8a\xa5a\xd8\x07\\d(e\xc9\xbes*\x13\x9f') == b'Hello......world'
-    for s in [b'', b'\xfe9iP\x05\x22\x490opXZ@1##']:
+    assert isinstance(make_crypto_functions(b"A2qK5XG3qX1MfLrGacD9AGVG2sbZYkvFFki94qbkVhE="), tuple)
+    e, d = make_crypto_functions(b"A2qK5XG3qX1MfLrGacD9AGVG2sbZYkvFFki94qbkVhE=")
+    for s in [b'', b'\xfe9iP\x05\x22\x490opXZ@1##', b'Helllllllllooooooo world']:
         assert d(e(s)) == s
 
 def test_random_name():
