@@ -51,10 +51,8 @@ def powers(base, limit):
         power += 1
 
 
-def interleave(a, **b):
-    if b == None:
-        return a
-    return [item for pair in zip(a, b) for item in pair] + a[len(b):] + b[len(a):]
+def interleave(a, *b):
+   pass
 
 class Cylinder:
     def __init__(self, radius=1, height=1):
@@ -88,15 +86,18 @@ def make_crypto_functions(theKey):
     return e, d
 
 def random_name(**kwargs):
-    params = ''
+    params = {'amount': 1}
+    if 'gender' in kwargs:
+        params['gender'] = kwargs['gender']
+    if 'region' in kwargs:
+        params['region'] = kwargs['region']
+    
+    url = 'https://uinames.com/api'
+    response = requests.get(url, params=params)
 
-    if 'gender' in kwargs and kwargs.get('gender') not in ['male', 'female']:
-        raise ValueError({'error': 'Invalid gender'})
-    for (qualifier, value) in kwargs.items():
-      params += ('&' if len(params) > 0 else '?') + qualifier + '=' + value
+    if response.status_code not in range(200, 300):
+        raise ValueError(response.text)
 
-    url = 'https://uinames.com/api' + params
-    response = requests.get(url)
     data = response.json()
 
     return data['surname'] + ', ' + data['name']
