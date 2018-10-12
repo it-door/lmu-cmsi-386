@@ -52,7 +52,16 @@ def powers(base, limit):
 
 
 def interleave(a, *b):
-   pass
+    firstLength = len(a)
+    secondLength = len(b)
+    maximum = max(firstLength, secondLength)
+    result = []
+    for i in range(maximum):
+        if i < firstLength:
+            result.append(a[i])
+        if (i < secondLength):
+            result.append(b[i])
+    return result
 
 class Cylinder:
     def __init__(self, radius=1, height=1):
