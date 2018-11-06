@@ -32,3 +32,6 @@
     - tests
         - __init__.py
         - warmup_test.py
+- homework3 - Java (Worked with Ian and Donovan)
+    - README.md
+        - Check [Donovan's Repo](https://github.com/dmoini/cmsi386-programming-languages/tree/master/homework3)
